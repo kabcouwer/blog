@@ -16,7 +16,12 @@ const Navbar = () => {
                 <div></div>
                 <div className="hidden sm:flex">
                     <ul className="hidden sm:flex">
-                        <Link href="/about">
+                        <Link href="/">
+                            <li className="ml-10 uppercase hover:border-b text-xl">
+                                Home
+                            </li>
+                        </Link>
+                        <Link href="#about">
                             <li className="ml-10 uppercase hover:border-b text-xl">
                                 About
                             </li>
@@ -31,7 +36,7 @@ const Navbar = () => {
                                 Experience
                             </li>
                         </Link>
-                        <Link href="/blog">
+                        <Link href="/posts">
                             <li className="ml-10 uppercase hover:border-b text-xl">
                                 Blog
                             </li>
@@ -55,7 +60,15 @@ const Navbar = () => {
                 </div>
                 <div className="flex-col py-4">
                     <ul>
-                        <Link href="/about">
+                        <Link href="/">
+                            <li
+                                onClick={() => setMenuOpen(false)}
+                                className="py-4 cursor-pointer"
+                            >
+                                Home
+                            </li>
+                        </Link>
+                        <Link href="#about">
                             <li
                                 onClick={() => setMenuOpen(false)}
                                 className="py-4 cursor-pointer"
@@ -79,7 +92,7 @@ const Navbar = () => {
                                 Experience
                             </li>
                         </Link>
-                        <Link href="/blog">
+                        <Link href="/posts">
                             <li
                                 onClick={() => setMenuOpen(false)}
                                 className="py-4 cursor-pointer"
