@@ -1,6 +1,6 @@
 // These styles apply to every route in the application
-import "../../styles/globals.css";
-import Navbar from "../../components/Navbar"
+import "./globals.css";
+import Navbar from "../components/navbar";
 
 export default function RootLayout({
   children,
