@@ -1,6 +1,7 @@
 // These styles apply to every route in the application
 import "./globals.css";
 import Navbar from "../components/navbar";
+import React from "react";
 
 export default function RootLayout({
   children,
@@ -8,15 +9,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="">
       <head></head>
-      <body>
+      <body className="">
         <Navbar />
-        <div className="pt-28">
-          {children}
-        </div>
+        <main className="">{children}</main>
       </body>
     </html>
   );
 }
-
