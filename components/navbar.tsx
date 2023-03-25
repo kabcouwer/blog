@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import {
+  AiOutlineMenu,
+  AiOutlineClose,
+  AiOutlineGithub,
+  AiFillLinkedin
+} from "react-icons/ai";
 import { useState } from "react";
 
 function Logo() {
@@ -156,6 +161,28 @@ const Navbar = () => {
                 Blog
               </li>
             </Link>
+            <div className="flex justify-left my-2">
+              <div className="">
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="https://github.com/kabcouwer"
+                  className="flex gap-2"
+                >
+                  <AiOutlineGithub size={28} />
+                </a>
+              </div>
+              <div className="">
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="https://www.linkedin.com/in/kim-abcouwer?trk=profile-badge"
+                  className="flex gap-2"
+                >
+                  <AiFillLinkedin size={28} />
+                </a>
+              </div>
+            </div>
           </ul>
         </div>
       </div>
