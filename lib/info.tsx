@@ -14,7 +14,7 @@ export const bio = () => {
     <>
       I am an experienced{" "}
       <b style={{ color: textColors.coral }}>software engineer</b> and an adept
-      <b style={{ color: textColors.coral }}>problem solver </b> who is looking
+      <b style={{ color: textColors.coral }}> problem solver </b> who is looking
       to learn and use my skills to help create a more sustainable and kinder
       future. For that reason, I am actively looking for my next position in the
       <b style={{ color: textColors.white }}> clean</b> or{" "}
