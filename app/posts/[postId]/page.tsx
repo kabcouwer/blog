@@ -16,8 +16,8 @@ const fetchPost = async (todoId: string) => {
   return post;
 };
 
-async function PostPage({ params: { postId } }: PageProps) {
-  const post = await fetchPost(postId);
+async function PostPage({ params: { todoId } }: PageProps) {
+  const post = await fetchPost(todoId);
 
   return (
     <div className="p-10 bg-yellow-200 border-2 m-2 shadow-lg">
