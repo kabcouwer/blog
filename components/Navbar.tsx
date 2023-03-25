@@ -69,18 +69,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full h-24 shadow-xl bg-teal-500">
+    <nav className="fixed w-full h-24 shadow-xl bg-teal-600">
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
         <div>
           <Logo />
         </div>
         <div className="hidden sm:flex">
           <ul className="hidden sm:flex">
-            <Link href="/">
-              <li className="text-white ml-10 uppercase hover:border-b text-xl">
-                Home
-              </li>
-            </Link>
             <Link href="#about">
               <li className="text-white ml-10 uppercase hover:border-b text-xl">
                 About
@@ -104,7 +99,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div onClick={handleNav} className="sm:hidden cursor-pointer p1-24">
-          <AiOutlineMenu size={25} />
+          <AiOutlineMenu size={25} color={"white"} />
         </div>
       </div>
       <div
@@ -126,7 +121,7 @@ const Navbar = () => {
                 onClick={() => setMenuOpen(false)}
                 className="py-4 cursor-pointer"
               >
-                Home
+                <Logo />
               </li>
             </Link>
             <Link href="#about">

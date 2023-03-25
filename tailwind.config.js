@@ -9,10 +9,6 @@ module.exports = {
       white: "#FFF",
       black: "#000",
     },
-    container: {
-      center: true,
-      padding: '2rem',
-    },
     extend: {},
   },
   plugins: [],

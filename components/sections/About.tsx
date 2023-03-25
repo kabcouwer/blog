@@ -6,10 +6,10 @@ export default function About() {
   return (
     <section
       id="about"
-      className="md:flex items-stretch pt-28 pb-5 px-5 bg-teal-500"
+      className="flex flex-col md:flex-row justify-center mx-auto pb-20 pt-28 bg-slate-600"
     >
-      <div className="content-center">
-        <div className="container flex justify-center md:mt-8 md:flex-row">
+      <div>
+        <div className="flex justify-center md:mt-8 md:flex-row">
           <Image
             alt={name}
             className="rounded-full"
@@ -19,8 +19,12 @@ export default function About() {
             priority
           />
         </div>
-        <div className="container flex justify-center my-2">
-          <div className="px-4">
+      </div>
+      <div className="mx-20">
+        <p className="text-white my-1 max-w-[460px]">Hi, I&apos;m</p>
+        <h1 className="text-white font-bold text-3xl font-serif">{name}</h1>
+        <div className="flex justify-left my-2">
+          <div className="">
             <a
               rel="noopener noreferrer"
               target="_blank"
@@ -30,7 +34,7 @@ export default function About() {
               <AiOutlineGithub size={28} />
             </a>
           </div>
-          <div className="px-4">
+          <div className="">
             <a
               rel="noopener noreferrer"
               target="_blank"
@@ -41,10 +45,6 @@ export default function About() {
             </a>
           </div>
         </div>
-      </div>
-      <div className="mx-20">
-        <p className="my-1 max-w-[460px]">Hi, I&apos;m</p>
-        <h1 className="text-white font-bold text-3xl font-serif">{name}</h1>
         <p className="my-5 max-w-[460px]">{bio()}</p>
       </div>
     </section>
