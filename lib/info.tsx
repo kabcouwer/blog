@@ -1,4 +1,4 @@
-import profilePic from "../lib/images/avatar.jpg";
+import profilePic from "../public/images/avatar.jpg";
 
 export const name = "Kim Abcouwer";
 export const avatar = profilePic;
