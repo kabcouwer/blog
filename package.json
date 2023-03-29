@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.4",
     "@next/mdx": "^13.2.4",
     "@types/mdx": "^2.0.4",
     "@types/node": "18.15.5",

@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { useMediaQuery } from "@material-ui/core";
+import React, { useState, useCallback, useEffect } from "react";
 
 import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
 import PersonalBio from "../content/personal-bio.mdx";
@@ -20,8 +19,34 @@ const attributes = {
   linkedinIcon: <AiFillLinkedin size={28} />,
 };
 
+const useMediaQuery = (width: number) => {
+  const [targetReached, setTargetReached] = useState(false);
+
+  const updateTarget = useCallback((e: any) => {
+    if (e.matches) {
+      setTargetReached(true);
+    } else {
+      setTargetReached(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia(`(max-width: ${width}px)`);
+    media.addEventListener("change", updateTarget);
+
+    // Check on mount (callback is not called until a change occurs)
+    if (media.matches) {
+      setTargetReached(true);
+    }
+
+    return () => media.removeEventListener("change", updateTarget);
+  }, [width, updateTarget]);
+
+  return targetReached;
+};
+
 export default function About() {
-  const isMobile = useMediaQuery("(max-width:480px)");
+  const isMobile = useMediaQuery(480);
 
   return (
     <section
