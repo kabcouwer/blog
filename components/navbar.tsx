@@ -1,14 +1,10 @@
 "use client";
 
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  AiOutlineMenu,
-  AiOutlineClose,
-  AiOutlineGithub,
-  AiFillLinkedin
-} from "react-icons/ai";
-import { useState } from "react";
+
+import { AiOutlineMenu, AiOutlineClose, AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
 
 function Logo() {
   return (
