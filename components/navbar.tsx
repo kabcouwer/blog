@@ -67,7 +67,43 @@ function Logo() {
   );
 }
 
-const Navbar = () => {
+export default function Navbar() {
+  // const [domLoaded, setDomLoaded] = useState(false);
+
+  // useEffect(() => {
+  //   setDomLoaded(true);
+  // }, []);
+
+  // const smoothScrollTo = (anchorTag: string) => {
+  //   const element = document.querySelector(anchorTag);
+  //   // if on index page, smooth scroll
+  //   if (element) {
+  //     const navbarHeight = document.getElementById("navigation")!.offsetHeight;
+  //     const elementPosition =
+  //       element.getBoundingClientRect().top + window.scrollY;
+  //     const offsetPosition = elementPosition - navbarHeight;
+  //     window.scrollTo({
+  //       top: offsetPosition,
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
+
+  const smoothScrollTo = (anchorTag: string) => {
+    const element = document.querySelector(anchorTag);
+    // if on index page, smooth scroll
+    if (element) {
+      const appbarHeight = document.getElementById("navigation").offsetHeight;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - appbarHeight;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleNav = () => {
@@ -75,34 +111,38 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full h-24 shadow-xl bg-teal-600">
+    // <>
+    // {domLoaded && (
+    <nav id="navigation" className="fixed w-full h-24 shadow-xl bg-teal-600">
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
         <div>
-          <Logo />
+          <Link href="/">
+            <Logo />
+          </Link>
         </div>
         <div className="hidden sm:flex">
-          <ul className="hidden sm:flex">
-            <Link href="#about">
-              <li className="text-white ml-10 uppercase hover:border-b text-xl">
-                About
-              </li>
+          <div className="hidden sm:flex">
+            <Link
+              onClick={() => smoothScrollTo("#about")}
+              href="/#about"
+              className="text-white ml-10 uppercase hover:border-b text-xl"
+            >
+              About
             </Link>
-            <Link href="#projects">
-              <li className="text-white ml-10 uppercase hover:border-b text-xl">
-                Projects
-              </li>
+            <Link
+              onClick={() => smoothScrollTo("#projects")}
+              href="/#projects"
+              className="text-white ml-10 uppercase hover:border-b text-xl"
+            >
+              Projects
             </Link>
-            <Link href="#experience">
-              <li className="text-white ml-10 uppercase hover:border-b text-xl">
-                Experience
-              </li>
+            <Link
+              href="/posts"
+              className="text-white ml-10 uppercase hover:border-b text-xl"
+            >
+              Blog
             </Link>
-            <Link href="/posts">
-              <li className="text-white ml-10 uppercase hover:border-b text-xl">
-                Blog
-              </li>
-            </Link>
-          </ul>
+          </div>
         </div>
         <div onClick={handleNav} className="sm:hidden cursor-pointer p1-24">
           <AiOutlineMenu size={25} color={"white"} />
@@ -121,73 +161,64 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex-col py-4">
-          <ul>
-            <Link href="/">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                <Logo />
-              </li>
+          <div className="py-4 cursor-pointer">
+            <Link onClick={() => setMenuOpen(false)} href="/">
+              <Logo />
             </Link>
-            <Link href="#about">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                About
-              </li>
+          </div>
+          <div className="py-4 cursor-pointer">
+            <Link
+              onClick={() => {
+                setMenuOpen(false);
+                smoothScrollTo("#about");
+              }}
+              href="/#about"
+            >
+              About
             </Link>
-            <Link href="/projects">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                Projects
-              </li>
+          </div>
+          <div className="py-4 cursor-pointer">
+            <Link
+              onClick={() => {
+                setMenuOpen(false);
+                smoothScrollTo("#projects");
+              }}
+              href="/#projects"
+            >
+              Projects
             </Link>
-            <Link href="/experience">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                Experience
-              </li>
+          </div>
+          <div className="py-4 cursor-pointer">
+            <Link onClick={() => setMenuOpen(false)} href="/posts">
+              Blog
             </Link>
-            <Link href="/posts">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
+          </div>
+          <div className="flex justify-left my-2">
+            <div className="">
+              <Link
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://github.com/kabcouwer"
+                className="flex gap-2"
               >
-                Blog
-              </li>
-            </Link>
-            <div className="flex justify-left my-2">
-              <div className="">
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href="https://github.com/kabcouwer"
-                  className="flex gap-2"
-                >
-                  <AiOutlineGithub size={28} />
-                </a>
-              </div>
-              <div className="">
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href="https://www.linkedin.com/in/kim-abcouwer?trk=profile-badge"
-                  className="flex gap-2"
-                >
-                  <AiFillLinkedin size={28} />
-                </a>
-              </div>
+                <AiOutlineGithub size={28} />
+              </Link>
             </div>
-          </ul>
+            <div className="">
+              <Link
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://www.linkedin.com/in/kim-abcouwer?trk=profile-badge"
+                className="flex gap-2"
+              >
+                <AiFillLinkedin size={28} />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
+    // )}
+    // </>
   );
-};
-export default Navbar;
+}
