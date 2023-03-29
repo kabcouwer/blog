@@ -1,5 +1,6 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 type AboutMobileProps = {
   attributes: {
@@ -42,24 +43,24 @@ export default function AboutMobileLayout(props: AboutMobileProps) {
           </div>
           <div className="flex justify-left my-2">
             <div className="">
-              <a
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={githubLink}
                 className="flex pr-4"
               >
                 {githubIcon}
-              </a>
+              </Link>
             </div>
             <div className="">
-              <a
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={linkedinLink}
                 className="flex pr-4"
               >
                 {linkedinIcon}
-              </a>
+              </Link>
             </div>
           </div>
           <p className="leading-relaxed max-w-[460px] pt-4">{bio}</p>

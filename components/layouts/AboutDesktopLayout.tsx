@@ -1,5 +1,6 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 type AboutDesktopProps = {
   attributes: {
@@ -32,24 +33,24 @@ export default function AboutDesktopLayout(props: AboutDesktopProps) {
           <h1 className="text-white font-bold text-3xl font-serif">{name}</h1>
           <div className="flex justify-left mt-2 mb-6">
             <div className="">
-              <a
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={githubLink}
                 className="flex gap-2"
               >
                 {githubIcon}
-              </a>
+              </Link>
             </div>
             <div className="">
-              <a
+              <Link
                 rel="noopener noreferrer"
                 target="_blank"
                 href={linkedinLink}
                 className="flex gap-2"
               >
                 {linkedinIcon}
-              </a>
+              </Link>
             </div>
           </div>
           <p className="leading-relaxed max-w-[460px]">{bio}</p>
