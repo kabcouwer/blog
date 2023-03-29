@@ -1,5 +1,5 @@
 import React from "react";
-import { Post } from "../../../typings";
+import { Post } from "../../../types/post";
 
 type PageProps = {
   params: {
