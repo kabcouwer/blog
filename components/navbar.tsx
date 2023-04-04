@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -11,11 +11,16 @@ import {
   AiFillLinkedin,
 } from "react-icons/ai";
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 function Logo() {
   return (
     <Link aria-label="Kim Abcouwer" href="/">
       <motion.svg
         className="text-white h-[25px] md:h-[37px]"
+        onClick={scrollToTop}
         width="25"
         height="37"
         viewBox="0 0 316 316" // <min-x> <min-y> <width> <height>
@@ -67,7 +72,29 @@ function Logo() {
   );
 }
 
-const Navbar = () => {
+export default function Navbar() {
+  // smooth scroll hook
+  const [navClick, setNavClick] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const hash = window.location.hash;
+      const element = document.querySelector(hash);
+      if (element) {
+        const navbarHeight = document.getElementById("navbar")!.offsetHeight;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - navbarHeight;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 250);
+  }, [navClick]);
+
+  const toggleNavClick = () => setNavClick((oldVal) => !oldVal);
+
+  // mobile navbar hook
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleNav = () => {
@@ -75,34 +102,35 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full h-24 shadow-xl bg-teal-600">
+    <nav id="navbar" className="fixed w-full h-24 shadow-xl bg-teal-600">
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
         <div>
           <Logo />
         </div>
         <div className="hidden sm:flex">
-          <ul className="hidden sm:flex">
-            <Link href="#about">
-              <li className="text-white ml-10 uppercase hover:border-b text-xl">
-                About
-              </li>
+          <div className="hidden sm:flex">
+            <Link
+              href="/#about"
+              onClick={toggleNavClick}
+              className="text-white ml-10 uppercase hover:border-b text-xl"
+            >
+              About
             </Link>
-            <Link href="#projects">
-              <li className="text-white ml-10 uppercase hover:border-b text-xl">
-                Projects
-              </li>
+            <Link
+              href="/#projects"
+              scroll={false}
+              onClick={toggleNavClick}
+              className="text-white ml-10 uppercase hover:border-b text-xl"
+            >
+              Projects
             </Link>
-            <Link href="#experience">
-              <li className="text-white ml-10 uppercase hover:border-b text-xl">
-                Experience
-              </li>
+            <Link
+              href="/posts"
+              className="text-white ml-10 uppercase hover:border-b text-xl"
+            >
+              Blog
             </Link>
-            <Link href="/posts">
-              <li className="text-white ml-10 uppercase hover:border-b text-xl">
-                Blog
-              </li>
-            </Link>
-          </ul>
+          </div>
         </div>
         <div onClick={handleNav} className="sm:hidden cursor-pointer p1-24">
           <AiOutlineMenu size={25} color={"white"} />
@@ -121,73 +149,59 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex-col py-4">
-          <ul>
-            <Link href="/">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                <Logo />
-              </li>
+          <div className="py-4 cursor-pointer">
+            <Logo />
+          </div>
+          <div className="py-4 cursor-pointer">
+            <Link
+              href="/#about"
+              onClick={() => {
+                setMenuOpen(false);
+                toggleNavClick();
+              }}
+            >
+              About
             </Link>
-            <Link href="#about">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                About
-              </li>
+          </div>
+          <div className="py-4 cursor-pointer">
+            <Link
+              href="/#projects"
+              scroll={false}
+              onClick={() => {
+                setMenuOpen(false);
+                toggleNavClick();
+              }}
+            >
+              Projects
             </Link>
-            <Link href="/projects">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                Projects
-              </li>
+          </div>
+          <div className="py-4 cursor-pointer">
+            <Link href="/posts" onClick={() => setMenuOpen(false)}>
+              Blog
             </Link>
-            <Link href="/experience">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                Experience
-              </li>
+          </div>
+          <div className="flex justify-left my-2">
+            <Link
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/kabcouwer"
+              onClick={() => setMenuOpen(false)}
+              className="flex gap-2"
+            >
+              <AiOutlineGithub size={28} />
             </Link>
-            <Link href="/posts">
-              <li
-                onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                Blog
-              </li>
+            <Link
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://www.linkedin.com/in/kim-abcouwer?trk=profile-badge"
+              onClick={() => setMenuOpen(false)}
+              className="flex gap-2"
+            >
+              <AiFillLinkedin size={28} />
             </Link>
-            <div className="flex justify-left my-2">
-              <div className="">
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href="https://github.com/kabcouwer"
-                  className="flex gap-2"
-                >
-                  <AiOutlineGithub size={28} />
-                </a>
-              </div>
-              <div className="">
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href="https://www.linkedin.com/in/kim-abcouwer?trk=profile-badge"
-                  className="flex gap-2"
-                >
-                  <AiFillLinkedin size={28} />
-                </a>
-              </div>
-            </div>
-          </ul>
+          </div>
         </div>
       </div>
     </nav>
   );
-};
-export default Navbar;
+}
