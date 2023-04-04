@@ -79,11 +79,10 @@ export default function Navbar() {
   useEffect(() => {
     setTimeout(() => {
       const hash = window.location.hash;
-      if (hash) {
-        const element = document.querySelector(hash);
-        const navbarHeight = document.getElementById("navbar").offsetHeight;
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
+      const element = document.querySelector(hash);
+      if (element) {
+        const navbarHeight = document.getElementById("navbar")!.offsetHeight;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = elementPosition - navbarHeight;
         window.scrollTo({
           top: offsetPosition,
