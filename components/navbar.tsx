@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -11,11 +11,16 @@ import {
   AiFillLinkedin,
 } from "react-icons/ai";
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 function Logo() {
   return (
     <Link aria-label="Kim Abcouwer" href="/">
       <motion.svg
         className="text-white h-[25px] md:h-[37px]"
+        onClick={scrollToTop}
         width="25"
         height="37"
         viewBox="0 0 316 316" // <min-x> <min-y> <width> <height>
@@ -68,42 +73,29 @@ function Logo() {
 }
 
 export default function Navbar() {
-  // const [domLoaded, setDomLoaded] = useState(false);
+  // smooth scroll hook
+  const [navClick, setNavClick] = useState(false);
 
-  // useEffect(() => {
-  //   setDomLoaded(true);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        const navbarHeight = document.getElementById("navbar").offsetHeight;
+        const elementPosition =
+          element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - navbarHeight;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 250);
+  }, [navClick]);
 
-  // const smoothScrollTo = (anchorTag: string) => {
-  //   const element = document.querySelector(anchorTag);
-  //   // if on index page, smooth scroll
-  //   if (element) {
-  //     const navbarHeight = document.getElementById("navigation")!.offsetHeight;
-  //     const elementPosition =
-  //       element.getBoundingClientRect().top + window.scrollY;
-  //     const offsetPosition = elementPosition - navbarHeight;
-  //     window.scrollTo({
-  //       top: offsetPosition,
-  //       behavior: "smooth",
-  //     });
-  //   }
-  // };
+  const toggleNavClick = () => setNavClick((oldVal) => !oldVal);
 
-  const smoothScrollTo = (anchorTag: string) => {
-    const element = document.querySelector(anchorTag);
-    // if on index page, smooth scroll
-    if (element) {
-      const appbarHeight = document.getElementById("navigation").offsetHeight;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - appbarHeight;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
-
+  // mobile navbar hook
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleNav = () => {
@@ -111,27 +103,24 @@ export default function Navbar() {
   };
 
   return (
-    // <>
-    // {domLoaded && (
-    <nav id="navigation" className="fixed w-full h-24 shadow-xl bg-teal-600">
+    <nav id="navbar" className="fixed w-full h-24 shadow-xl bg-teal-600">
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
         <div>
-          <Link href="/">
-            <Logo />
-          </Link>
+          <Logo />
         </div>
         <div className="hidden sm:flex">
           <div className="hidden sm:flex">
             <Link
-              onClick={() => smoothScrollTo("#about")}
               href="/#about"
+              onClick={toggleNavClick}
               className="text-white ml-10 uppercase hover:border-b text-xl"
             >
               About
             </Link>
             <Link
-              onClick={() => smoothScrollTo("#projects")}
               href="/#projects"
+              scroll={false}
+              onClick={toggleNavClick}
               className="text-white ml-10 uppercase hover:border-b text-xl"
             >
               Projects
@@ -162,63 +151,58 @@ export default function Navbar() {
         </div>
         <div className="flex-col py-4">
           <div className="py-4 cursor-pointer">
-            <Link onClick={() => setMenuOpen(false)} href="/">
-              <Logo />
-            </Link>
+            <Logo />
           </div>
           <div className="py-4 cursor-pointer">
             <Link
+              href="/#about"
               onClick={() => {
                 setMenuOpen(false);
-                smoothScrollTo("#about");
+                toggleNavClick();
               }}
-              href="/#about"
             >
               About
             </Link>
           </div>
           <div className="py-4 cursor-pointer">
             <Link
+              href="/#projects"
+              scroll={false}
               onClick={() => {
                 setMenuOpen(false);
-                smoothScrollTo("#projects");
+                toggleNavClick();
               }}
-              href="/#projects"
             >
               Projects
             </Link>
           </div>
           <div className="py-4 cursor-pointer">
-            <Link onClick={() => setMenuOpen(false)} href="/posts">
+            <Link href="/posts" onClick={() => setMenuOpen(false)}>
               Blog
             </Link>
           </div>
           <div className="flex justify-left my-2">
-            <div className="">
-              <Link
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://github.com/kabcouwer"
-                className="flex gap-2"
-              >
-                <AiOutlineGithub size={28} />
-              </Link>
-            </div>
-            <div className="">
-              <Link
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://www.linkedin.com/in/kim-abcouwer?trk=profile-badge"
-                className="flex gap-2"
-              >
-                <AiFillLinkedin size={28} />
-              </Link>
-            </div>
+            <Link
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/kabcouwer"
+              onClick={() => setMenuOpen(false)}
+              className="flex gap-2"
+            >
+              <AiOutlineGithub size={28} />
+            </Link>
+            <Link
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://www.linkedin.com/in/kim-abcouwer?trk=profile-badge"
+              onClick={() => setMenuOpen(false)}
+              className="flex gap-2"
+            >
+              <AiFillLinkedin size={28} />
+            </Link>
           </div>
         </div>
       </div>
     </nav>
-    // )}
-    // </>
   );
 }

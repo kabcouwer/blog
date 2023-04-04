@@ -11,12 +11,12 @@ import AboutMobileLayout from "../layouts/AboutMobileLayout";
 
 const attributes = {
   name: "Kim Abcouwer",
-  bio: <PersonalBio />,
   avatar: profilePic,
   githubLink: "https://github.com/kabcouwer",
   githubIcon: <AiOutlineGithub size={28} />,
   linkedinLink: "https://www.linkedin.com/in/kim-abcouwer/",
   linkedinIcon: <AiFillLinkedin size={28} />,
+  bio: <PersonalBio />,
 };
 
 const useMediaQuery = (width: number) => {
@@ -54,11 +54,13 @@ export default function About() {
       // className="flex flex-col md:flex-row justify-center mx-auto pb-20 pt-28 bg-slate-600"
       className="bg-slate-600"
     >
-      {isMobile ? (
-        <AboutMobileLayout attributes={attributes} />
-      ) : (
-        <AboutDesktopLayout attributes={attributes} />
-      )}
+      <div>
+        {isMobile ? (
+          <AboutMobileLayout attributes={attributes} />
+        ) : (
+          <AboutDesktopLayout attributes={attributes} />
+        )}
+      </div>
     </section>
   );
 }

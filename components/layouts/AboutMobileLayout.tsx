@@ -63,7 +63,7 @@ export default function AboutMobileLayout(props: AboutMobileProps) {
               </Link>
             </div>
           </div>
-          <p className="leading-relaxed max-w-[460px] pt-4">{bio}</p>
+          <div className="leading-relaxed max-w-[460px] pt-4">{bio}</div>
         </div>
       </div>
     </div>

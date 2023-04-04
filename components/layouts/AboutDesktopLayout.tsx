@@ -5,12 +5,12 @@ import Link from "next/link";
 type AboutDesktopProps = {
   attributes: {
     name: string;
-    bio: JSX.Element;
     avatar: StaticImageData;
     githubLink: string;
     githubIcon: JSX.Element;
     linkedinLink: string;
     linkedinIcon: JSX.Element;
+    bio: JSX.Element;
   };
 };
 
@@ -53,7 +53,7 @@ export default function AboutDesktopLayout(props: AboutDesktopProps) {
               </Link>
             </div>
           </div>
-          <p className="leading-relaxed max-w-[460px]">{bio}</p>
+          <div className="leading-relaxed max-w-[460px]">{bio}</div>
         </div>
         <div className="md:py-8 md:m-auto align-center cursor-auto">
           <Image

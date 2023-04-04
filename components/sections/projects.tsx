@@ -12,7 +12,7 @@ const projectItems = [
     subtitle: "React Performance Framework",
     dates: "Mar 2023",
     image: bookIcon,
-    imageCredit: `<p>Image Credit: <a href='https://www.envato.com/blog/how-to-create-a-portfolio/'>envatoblog</a></p>`,
+    imageCredit: `<div>Image Credit: <a href='https://www.envato.com/blog/how-to-create-a-portfolio/'>envatoblog</a></div>`,
     demo: "/",
     source: "https://github.com/kabcouwer/portfolio-blog",
     skills: [

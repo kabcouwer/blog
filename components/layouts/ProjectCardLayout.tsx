@@ -61,7 +61,7 @@ export default function ProjectCardLayout(props: ProjectCardProps) {
             <div className="md:flex mb-4">
               <BadgeArray skills={skills} />
             </div>
-            <p className="leading-relaxed max-w-[460px]">{description}</p>
+            <div className="leading-relaxed max-w-[460px]">{description}</div>
             <div className="flex mt-6 items-center pb-5 mb-5">
               <div className="flex">
                 <Link href={demo} target="_blank" rel="noopener noreferrer">
