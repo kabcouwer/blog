@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}", // Note the addition of the `app` directory.
-    "./components/**/*.{js,ts,jsx,tsx}"
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
     'text-cyan-800',
@@ -22,11 +22,16 @@ module.exports = {
     'bg-green-100',
   ],
   theme: {
-    textColor: {
-      white: "#FFF",
-      black: "#000",
-    },
-    extend: {},
+    extend: {
+      colors:
+      {
+        white: "#FFF",
+        black: "#000",
+        red: "#FF5925",
+        blue: "#3E83FB",
+        yellow: "#FBBF24"
+      }
+    }
   },
   plugins: [],
 }

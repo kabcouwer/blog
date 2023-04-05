@@ -4,6 +4,7 @@ import React from "react";
 import type { Metadata } from "next";
 
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

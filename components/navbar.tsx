@@ -19,7 +19,7 @@ function Logo() {
   return (
     <Link aria-label="Kim Abcouwer" href="/">
       <motion.svg
-        className="text-white h-[25px] md:h-[37px]"
+        className="text-black dark:text-white h-[25px] md:h-[37px]"
         onClick={scrollToTop}
         width="25"
         height="37"
@@ -79,15 +79,18 @@ export default function Navbar() {
   useEffect(() => {
     setTimeout(() => {
       const hash = window.location.hash;
-      const element = document.querySelector(hash);
-      if (element) {
-        const navbarHeight = document.getElementById("navbar")!.offsetHeight;
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - navbarHeight;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          const navbarHeight = document.getElementById("navbar")!.offsetHeight;
+          const elementPosition =
+            element.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - navbarHeight;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
       }
     }, 250);
   }, [navClick]);
@@ -102,7 +105,10 @@ export default function Navbar() {
   };
 
   return (
-    <nav id="navbar" className="fixed w-full h-24 shadow-xl bg-teal-600">
+    <nav
+      id="navbar"
+      className="sticky top-0 z-30 w-full h-24 shadow-xl bg-white dark:bg-black"
+    >
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
         <div>
           <Logo />
@@ -110,9 +116,16 @@ export default function Navbar() {
         <div className="hidden sm:flex">
           <div className="hidden sm:flex">
             <Link
-              href="/#about"
-              onClick={toggleNavClick}
-              className="text-white ml-10 uppercase hover:border-b text-xl"
+              href="/"
+              onClick={scrollToTop}
+              className="text-black dark:text-white ml-10 uppercase hover:text-blue text-xl"
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              // onClick={toggleNavClick}
+              className="text-black dark:text-white ml-10 uppercase hover:text-blue text-xl"
             >
               About
             </Link>
@@ -120,26 +133,26 @@ export default function Navbar() {
               href="/#projects"
               scroll={false}
               onClick={toggleNavClick}
-              className="text-white ml-10 uppercase hover:border-b text-xl"
+              className="text-black dark:text-white ml-10 uppercase hover:text-blue text-xl"
             >
               Projects
             </Link>
             <Link
               href="/posts"
-              className="text-white ml-10 uppercase hover:border-b text-xl"
+              className="text-black dark:text-white ml-10 uppercase hover:text-blue text-xl"
             >
               Blog
             </Link>
           </div>
         </div>
         <div onClick={handleNav} className="sm:hidden cursor-pointer p1-24">
-          <AiOutlineMenu size={25} color={"white"} />
+          <AiOutlineMenu size={25} />
         </div>
       </div>
       <div
         className={
           menuOpen
-            ? "fixed left-0 top-0 w-[65%] sm:hidden h-screen bg-[#ecf0f3] p-10 ease-in duration-500"
+            ? "fixed left-0 top-0 w-[100%] sm:hidden h-screen bg-white dark:bg-black p-10 ease-in duration-500"
             : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
         }
       >
@@ -154,10 +167,21 @@ export default function Navbar() {
           </div>
           <div className="py-4 cursor-pointer">
             <Link
-              href="/#about"
+              href="/"
               onClick={() => {
                 setMenuOpen(false);
-                toggleNavClick();
+                scrollToTop();
+              }}
+            >
+              Home
+            </Link>
+          </div>
+          <div className="py-4 cursor-pointer">
+            <Link
+              href="/about"
+              onClick={() => {
+                setMenuOpen(false);
+                // toggleNavClick();
               }}
             >
               About

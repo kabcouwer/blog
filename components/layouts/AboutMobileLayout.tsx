@@ -29,8 +29,12 @@ export default function AboutMobileLayout(props: AboutMobileProps) {
     <div className="container mx-auto px-5 py-24 cursor-auto">
       <div className="mx-auto flex flex-wrap">
         <div className="w-full mt-6 cursor-auto">
-          <p className="text-white my-1 max-w-[460px]">Hi, I&apos;m</p>
-          <h1 className="text-white font-bold text-3xl font-serif">{name}</h1>
+          <p className="text-black dark:text-white my-1 max-w-[460px]">
+            Hi, I&apos;m
+          </p>
+          <h1 className="text-black dark:text-white font-bold text-3xl">
+            {name}
+          </h1>
           <div className="py-4 m-auto align-center cursor-auto">
             <Image
               alt={name}
@@ -63,7 +67,9 @@ export default function AboutMobileLayout(props: AboutMobileProps) {
               </Link>
             </div>
           </div>
-          <div className="leading-relaxed max-w-[460px] pt-4">{bio}</div>
+          <div className="leading-relaxed text-black dark:text-white max-w-[460px] pt-4">
+            {bio}
+          </div>
         </div>
       </div>
     </div>
