@@ -1,6 +1,5 @@
 import React from "react";
 
-import bookIcon from "../../public/images/bookIcon.jpeg";
 import PortfolioDescription from "../content/project-portfolio.mdx";
 
 import ProjectCardLayout from "../layouts/ProjectCardLayout";
@@ -11,8 +10,6 @@ const projectItems = [
     title: "Portfolio Blog Website",
     subtitle: "React Performance Framework",
     dates: "Mar 2023",
-    image: bookIcon,
-    imageCredit: `<div>Image Credit: <a href='https://www.envato.com/blog/how-to-create-a-portfolio/'>envatoblog</a></div>`,
     demo: "/",
     source: "https://github.com/kabcouwer/portfolio-blog",
     skills: [
@@ -48,7 +45,10 @@ const projectItems = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="">
+    <section id="projects" className="bg-white dark:bg-black">
+      <h1 className="text-black dark:text-white font-bold text-5xl pt-6 text-center">
+        Projects
+      </h1>
       <div>
         {projectItems.map((proj) => (
           <ProjectCardLayout key={proj.id} details={proj} />

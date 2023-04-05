@@ -3,11 +3,11 @@
 import React, { useState, useCallback, useEffect } from "react";
 
 import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
-import PersonalBio from "../content/personal-bio.mdx";
+import PersonalBio from "../../components/content/personal-bio.mdx";
 import profilePic from "../../public/images/avatar.jpg";
 
-import AboutDesktopLayout from "../layouts/AboutDesktopLayout";
-import AboutMobileLayout from "../layouts/AboutMobileLayout";
+import AboutDesktopLayout from "../../components/layouts/AboutDesktopLayout";
+import AboutMobileLayout from "../../components/layouts/AboutMobileLayout";
 
 const attributes = {
   name: "Kim Abcouwer",
@@ -52,7 +52,7 @@ export default function About() {
     <section
       id="about"
       // className="flex flex-col md:flex-row justify-center mx-auto pb-20 pt-28 bg-slate-600"
-      className="bg-slate-600"
+      className="bg-white dark:bg-black"
     >
       <div>
         {isMobile ? (
