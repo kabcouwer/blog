@@ -38,10 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className="relative min-h-screen bg-white dark:bg-black"
-    >
+    <html lang="en" className="relative min-h-screen bg-white dark:bg-black">
       <body className="pb-24">
         <Navbar />
         <main>{children}</main>
