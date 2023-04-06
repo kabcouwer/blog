@@ -131,7 +131,10 @@ export default function Navbar() {
             })}
           </div>
         </div>
-        <div onClick={handleNav} className="sm:hidden cursor-pointer p1-24">
+        <div
+          onClick={handleNav}
+          className="sm:hidden text-black dark:text-white cursor-pointer p1-24"
+        >
           <AiOutlineMenu size={25} />
         </div>
       </div>
@@ -143,12 +146,15 @@ export default function Navbar() {
         }
       >
         <div className="flex w-full items-center justify-end">
-          <div onClick={handleNav} className="cursor-pointer">
+          <div
+            onClick={handleNav}
+            className="text-black dark:text-white cursor-pointer"
+          >
             <AiOutlineClose size={25} />
           </div>
         </div>
         <div className="flex-col py-4">
-          <div className="py-4 cursor-pointer">
+          <div className="py-4 text-black dark:text-white cursor-pointer">
             <Logo />
           </div>
           {navItems.map((link, index) => {
@@ -175,7 +181,7 @@ export default function Navbar() {
               target="_blank"
               href="https://github.com/kabcouwer"
               onClick={() => setMenuOpen(false)}
-              className="flex gap-2 mr-2"
+              className="flex gap-2 mr-2 text-black dark:text-white"
             >
               <AiOutlineGithub size={28} />
             </Link>
@@ -184,7 +190,7 @@ export default function Navbar() {
               target="_blank"
               href="https://www.linkedin.com/in/kim-abcouwer?trk=profile-badge"
               onClick={() => setMenuOpen(false)}
-              className="flex gap-2 mr-2"
+              className="flex gap-2 mr-2 text-black dark:text-white"
             >
               <AiFillLinkedin size={28} />
             </Link>
