@@ -7,7 +7,7 @@ import Circle from "../components/svgs/circle.svg";
 
 export default function Footer() {
   return (
-    <footer className="absolute bottom-0 w-full h-24">
+    <footer className="absolute bottom-0 left-0 w-full h-24">
       <h2 className="md:mx-8 mx-4 text-2xl">Contact</h2>
       <div className="flex items-start items-center px-4 2xl:px-16 my-4 md:mx-4">
         <Link

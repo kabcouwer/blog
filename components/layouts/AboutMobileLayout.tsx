@@ -13,7 +13,7 @@ export default function AboutMobileLayout(props: AboutMobileProps) {
   const { name, bio, avatar } = props.attributes;
 
   return (
-    <div className="container mx-auto px-5 py-8 cursor-auto ">
+    <div className="container mx-auto px-5 pt-4 pb-14 cursor-auto ">
       <div className="mx-auto flex flex-wrap">
         <div className="w-full cursor-auto">
           <p className="text-black dark:text-white my-1 max-w-[460px]">

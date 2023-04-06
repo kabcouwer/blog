@@ -9,7 +9,7 @@ import heroImage from "../public/images/hero-image.png";
 export default function Home() {
   return (
     <section>
-      <div className="container mx-auto px-5 md:py-32 pt-2 pb-16 cursor-auto">
+      <div className="container mx-auto px-5 md:py-32 pt-4 pb-20 cursor-auto">
         <div className="md:w-4/5 mx-auto flex flex-wrap">
           <div className="md:w-1/2 w-full md:h-auto md:py-8 cursor-auto">
             <Image alt="Fun Shapes" src={heroImage} priority />
