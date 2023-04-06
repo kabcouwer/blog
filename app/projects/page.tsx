@@ -1,8 +1,8 @@
 import React from "react";
 
-import PortfolioDescription from "../content/project-portfolio.mdx";
+import PortfolioDescription from "../../components/content/project-portfolio.mdx";
 
-import ProjectCardLayout from "../layouts/ProjectCardLayout";
+import ProjectCardLayout from "../../components/layouts/ProjectCardLayout";
 
 const projectItems = [
   {
@@ -15,18 +15,18 @@ const projectItems = [
     skills: [
       {
         text: "Next.js",
-        color: "cyan-800",
-        bgColor: "cyan-100",
+        color: "green-800",
+        bgColor: "green-100",
       },
       {
         text: "TypeScript",
-        color: "blue-800",
-        bgColor: "blue-100",
+        color: "rose-800",
+        bgColor: "rose-100",
       },
       {
         text: "MDX",
-        color: "purple-800",
-        bgColor: "purple-100",
+        color: "sky-800",
+        bgColor: "sky-100",
       },
       {
         text: "TailwindCSS",
@@ -35,8 +35,8 @@ const projectItems = [
       },
       {
         text: "Vercel",
-        color: "green-800",
-        bgColor: "green-100",
+        color: "violet-800",
+        bgColor: "violet-100",
       },
     ],
     description: <PortfolioDescription />,
