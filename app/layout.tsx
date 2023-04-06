@@ -40,9 +40,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="relative min-h-screen scroll-smooth bg-white dark:bg-black"
+      className="relative min-h-screen bg-white dark:bg-black"
     >
-      <body className="h-full pb-24">
+      <body className="pb-24">
         <Navbar />
         <main>{children}</main>
         <Footer />
