@@ -2,7 +2,6 @@
 
 import React, { useState, useCallback, useEffect } from "react";
 
-import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
 import PersonalBio from "../../components/content/personal-bio.mdx";
 import profilePic from "../../public/images/avatar.jpg";
 
@@ -12,10 +11,6 @@ import AboutMobileLayout from "../../components/layouts/AboutMobileLayout";
 const attributes = {
   name: "Kim Abcouwer",
   avatar: profilePic,
-  githubLink: "https://github.com/kabcouwer",
-  githubIcon: <AiOutlineGithub size={28} />,
-  linkedinLink: "https://www.linkedin.com/in/kim-abcouwer/",
-  linkedinIcon: <AiFillLinkedin size={28} />,
   bio: <PersonalBio />,
 };
 
@@ -49,11 +44,7 @@ export default function About() {
   const isMobile = useMediaQuery(480);
 
   return (
-    <section
-      id="about"
-      // className="flex flex-col md:flex-row justify-center mx-auto pb-20 pt-28 bg-slate-600"
-      className="bg-white dark:bg-black"
-    >
+    <section id="about">
       <div>
         {isMobile ? (
           <AboutMobileLayout attributes={attributes} />

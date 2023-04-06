@@ -7,12 +7,14 @@ import Circle from "../components/svgs/circle.svg";
 
 export default function Footer() {
   return (
-    <footer className="w-full h-18 bg-white dark:bg-black">
-      <h2 className="mx-8 text-2xl">Contact</h2>
-      <div className="flex items-start items-center h-full w-full px-4 2xl:px-16 my-4 mx-4">
+    <footer className="absolute bottom-0 w-full h-24">
+      <h2 className="md:mx-8 mx-4 text-2xl">Contact</h2>
+      <div className="flex items-start items-center px-4 2xl:px-16 my-4 md:mx-4">
         <Link
-          href="#"
-          className="text-sm font-semibold mr-8 uppercase text-black dark:text-white hover:underline"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://github.com/kabcouwer"
+          className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:underline"
         >
           <div className="flex items-center">
             <div className="fill-red mr-2">
@@ -22,8 +24,10 @@ export default function Footer() {
           </div>
         </Link>
         <Link
-          href="#"
-          className="text-sm font-semibold mr-8 uppercase text-black dark:text-white hover:underline"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://www.linkedin.com/in/kim-abcouwer/"
+          className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:underline"
         >
           <div className="flex items-center">
             <div className="fill-yellow mr-2">
@@ -34,7 +38,7 @@ export default function Footer() {
         </Link>
         <Link
           href="#"
-          className="text-sm font-semibold mr-8 uppercase text-black dark:text-white hover:underline"
+          className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:underline"
         >
           <div className="flex items-center">
             <div className="fill-blue mr-2">

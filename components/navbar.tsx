@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 import {
   AiOutlineMenu,
@@ -11,16 +12,30 @@ import {
   AiFillLinkedin,
 } from "react-icons/ai";
 
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
+const navItems = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "About",
+    path: "/about",
+  },
+  {
+    name: "Projects",
+    path: "/projects",
+  },
+  // {
+  //   name: "Blog",
+  //   path: "/posts",
+  // },
+];
 
 function Logo() {
   return (
     <Link aria-label="Kim Abcouwer" href="/">
       <motion.svg
         className="text-black dark:text-white h-[25px] md:h-[37px]"
-        onClick={scrollToTop}
         width="25"
         height="37"
         viewBox="0 0 316 316" // <min-x> <min-y> <width> <height>
@@ -73,29 +88,11 @@ function Logo() {
 }
 
 export default function Navbar() {
-  // smooth scroll hook
-  const [navClick, setNavClick] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const hash = window.location.hash;
-      if (hash) {
-        const element = document.querySelector(hash);
-        if (element) {
-          const navbarHeight = document.getElementById("navbar")!.offsetHeight;
-          const elementPosition =
-            element.getBoundingClientRect().top + window.scrollY;
-          const offsetPosition = elementPosition - navbarHeight;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          });
-        }
-      }
-    }, 250);
-  }, [navClick]);
-
-  const toggleNavClick = () => setNavClick((oldVal) => !oldVal);
+  // path functionality
+  let pathname = usePathname() || "/";
+  if (pathname.includes("/posts/")) {
+    pathname = "/posts";
+  }
 
   // mobile navbar hook
   const [menuOpen, setMenuOpen] = useState(false);
@@ -107,7 +104,7 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className="sticky top-0 z-30 w-full h-24 shadow-xl bg-white dark:bg-black"
+      className="sticky top-0 z-30 h-24 shadow-xl bg-white dark:bg-black"
     >
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
         <div>
@@ -115,34 +112,23 @@ export default function Navbar() {
         </div>
         <div className="hidden sm:flex">
           <div className="hidden sm:flex">
-            <Link
-              href="/"
-              onClick={scrollToTop}
-              className="text-black dark:text-white ml-10 uppercase hover:text-blue text-xl"
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              // onClick={toggleNavClick}
-              className="text-black dark:text-white ml-10 uppercase hover:text-blue text-xl"
-            >
-              About
-            </Link>
-            <Link
-              href="/#projects"
-              scroll={false}
-              onClick={toggleNavClick}
-              className="text-black dark:text-white ml-10 uppercase hover:text-blue text-xl"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/posts"
-              className="text-black dark:text-white ml-10 uppercase hover:text-blue text-xl"
-            >
-              Blog
-            </Link>
+            {navItems.map((link, index) => {
+              const isActive = link.path === pathname;
+              return (
+                <Link
+                  key={index}
+                  href={link.path}
+                  // className="text-black dark:text-white ml-10 uppercase hover:text-blue text-xl"
+                  className={
+                    isActive
+                      ? "text-blue ml-10 uppercase hover:scale-125 text-xl"
+                      : "text-black dark:text-white ml-10 uppercase hover:scale-125 text-xl"
+                  }
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
         </div>
         <div onClick={handleNav} className="sm:hidden cursor-pointer p1-24">
@@ -165,52 +151,31 @@ export default function Navbar() {
           <div className="py-4 cursor-pointer">
             <Logo />
           </div>
-          <div className="py-4 cursor-pointer">
-            <Link
-              href="/"
-              onClick={() => {
-                setMenuOpen(false);
-                scrollToTop();
-              }}
-            >
-              Home
-            </Link>
-          </div>
-          <div className="py-4 cursor-pointer">
-            <Link
-              href="/about"
-              onClick={() => {
-                setMenuOpen(false);
-                // toggleNavClick();
-              }}
-            >
-              About
-            </Link>
-          </div>
-          <div className="py-4 cursor-pointer">
-            <Link
-              href="/#projects"
-              scroll={false}
-              onClick={() => {
-                setMenuOpen(false);
-                toggleNavClick();
-              }}
-            >
-              Projects
-            </Link>
-          </div>
-          <div className="py-4 cursor-pointer">
-            <Link href="/posts" onClick={() => setMenuOpen(false)}>
-              Blog
-            </Link>
-          </div>
+          {navItems.map((link, index) => {
+            const isActive = link.path === pathname;
+            return (
+              <div className="py-4 cursor-pointer" key={index}>
+                <Link
+                  href={link.path}
+                  className={
+                    isActive
+                      ? "text-blue uppercase hover:scale-125 text-xl"
+                      : "text-black dark:text-white uppercase hover:scale-125 text-xl"
+                  }
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              </div>
+            );
+          })}
           <div className="flex justify-left my-2">
             <Link
               rel="noopener noreferrer"
               target="_blank"
               href="https://github.com/kabcouwer"
               onClick={() => setMenuOpen(false)}
-              className="flex gap-2"
+              className="flex gap-2 mr-2"
             >
               <AiOutlineGithub size={28} />
             </Link>
@@ -219,7 +184,7 @@ export default function Navbar() {
               target="_blank"
               href="https://www.linkedin.com/in/kim-abcouwer?trk=profile-badge"
               onClick={() => setMenuOpen(false)}
-              className="flex gap-2"
+              className="flex gap-2 mr-2"
             >
               <AiFillLinkedin size={28} />
             </Link>
