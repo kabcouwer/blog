@@ -48,7 +48,7 @@ const projectItems = [
 export default function Projects() {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  }, []);
 
   return (
     <section id="projects">

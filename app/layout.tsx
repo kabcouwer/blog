@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import React, { useEffect } from "react";
+import React from "react";
 import type { Metadata } from "next";
 
 import Navbar from "../components/navbar";
@@ -38,7 +38,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="relative min-h-screen bg-white dark:bg-black font-serif">
+    <html
+      lang="en"
+      className="relative min-h-screen bg-white dark:bg-black font-serif"
+    >
       <body className="pb-24">
         <Navbar />
         <main>{children}</main>

@@ -9,7 +9,7 @@ import heroImage from "../public/images/hero-image.png";
 export default function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  }, []);
 
   return (
     <section>

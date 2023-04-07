@@ -43,7 +43,7 @@ const useMediaQuery = (width: number) => {
 export default function About() {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  }, []);
 
   const isMobile = useMediaQuery(480);
 
