@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 
 import PortfolioDescription from "../../components/content/project-portfolio.mdx";
 
@@ -44,6 +46,10 @@ const projectItems = [
 ];
 
 export default function Projects() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
   return (
     <section id="projects">
       <h1 className="text-black dark:text-white font-bold text-5xl pt-6 text-center">
