@@ -2,9 +2,9 @@
 
 import React, { useEffect } from "react";
 
-import PortfolioDescription from "../../components/content/project-portfolio.mdx";
+import PortfolioDescription from "../content/project-portfolio.mdx";
 
-import ProjectCardLayout from "../../components/layouts/ProjectCardLayout";
+import ProjectCardLayout from "../components/layouts/ProjectCardLayout";
 
 const projectItems = [
   {

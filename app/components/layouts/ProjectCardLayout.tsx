@@ -1,6 +1,7 @@
+import React from "react";
 import Link from "next/link";
 
-import BadgeArray from "../../components/badgeArray";
+import BadgeArray from "../badgeArray";
 
 type ProjectCardProps = {
   details: {

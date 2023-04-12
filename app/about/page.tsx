@@ -2,11 +2,11 @@
 
 import React, { useState, useCallback, useEffect } from "react";
 
-import PersonalBio from "../../components/content/personal-bio.mdx";
+import PersonalBio from "../content/personal-bio.mdx";
 import profilePic from "../../public/images/avatar.jpg";
 
-import AboutDesktopLayout from "../../components/layouts/AboutDesktopLayout";
-import AboutMobileLayout from "../../components/layouts/AboutMobileLayout";
+import AboutDesktopLayout from "../components/layouts/AboutDesktopLayout";
+import AboutMobileLayout from "../components/layouts/AboutMobileLayout";
 
 const attributes = {
   name: "Kim Abcouwer",
