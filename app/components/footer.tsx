@@ -39,7 +39,6 @@ export default function Footer() {
         <a
           href="/files/KimAbcouwerCSV.pdf"
           className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:scale-125"
-          alt="alt text"
           target="_blank"
           rel="noopener noreferrer"
         >
