@@ -29,8 +29,8 @@ export default function ProjectCardLayout(props: ProjectCardProps) {
   return (
     <div id={id}>
       <div className="container mx-auto px-5 py-12 text-black dark:text-white cursor-auto">
-        <div className="md:w-4/5 mx-auto">
-          <div className="md:pl-10 md:py-6 mt-6 md:mt-0 cursor-auto">
+        <div className="md:w-4/5 mx-auto flex items-center justify-center">
+          <div className="md:py-6 mt-6 md:mt-0 cursor-auto">
             <h1 className="text-3xl title-font font-medium mb-1 cursor-auto">
               {title}
             </h1>
@@ -43,7 +43,9 @@ export default function ProjectCardLayout(props: ProjectCardProps) {
             <div className="md:flex mb-4">
               <BadgeArray skills={skills} />
             </div>
-            <div className="leading-relaxed max-w-[600px]">{description}</div>
+            <div className="leading-relaxed max-w-[600px]">
+              {description}
+            </div>
             <div className="flex mt-6 items-center pb-5 mb-5">
               <div className="flex">
                 <Link href={source} target="_blank" rel="noopener noreferrer">

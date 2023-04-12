@@ -13,12 +13,16 @@ export default function Home() {
 
   return (
     <section>
-      <div className="container mx-auto px-5 md:py-32 pt-4 pb-20 cursor-auto">
+      <div className="container mx-auto px-5 md:py-32 pt-10 pb-20 cursor-auto">
         <div className="md:w-4/5 mx-auto flex flex-wrap">
-          <div className="md:w-1/2 w-full md:py-8 cursor-auto">
-            <Image alt="Fun Shapes" src={heroImage} priority />
+          <div className="flex md:w-1/2 w-full items-center justify-center md:py-8 cursor-auto">
+            <Image
+              alt="Hero Image"
+              src={heroImage}
+              width={150}
+              priority />
           </div>
-          <div className="flex flex-wrap justify-normal items-center md:w-1/2 w-full md:pl-10 md:py-12 pt-6 cursor-auto">
+          <div className="flex flex-wrap md:w-1/2 w-full items-center md:pl-10 md:py-12 pt-6 cursor-auto">
             <motion.div
               initial={{ opacity: 0, y: "-100vh" }}
               animate={{ opacity: 1, y: 0 }}

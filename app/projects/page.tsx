@@ -52,9 +52,6 @@ export default function Projects() {
 
   return (
     <section id="projects">
-      <h1 className="text-black dark:text-white font-bold text-5xl pt-6 text-center">
-        Projects
-      </h1>
       <div>
         {projectItems.map((proj) => (
           <ProjectCardLayout key={proj.id} details={proj} />

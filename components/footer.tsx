@@ -14,7 +14,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           target="_blank"
           href="https://github.com/kabcouwer"
-          className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:underline"
+          className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:scale-125"
         >
           <div className="flex items-center">
             <div className="fill-red mr-2">
@@ -27,7 +27,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           target="_blank"
           href="https://www.linkedin.com/in/kim-abcouwer/"
-          className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:underline"
+          className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:scale-125"
         >
           <div className="flex items-center">
             <div className="fill-yellow mr-2">
@@ -36,9 +36,12 @@ export default function Footer() {
             Linkedin
           </div>
         </Link>
-        <Link
-          href="#"
-          className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:underline"
+        <a
+          href="/files/KimAbcouwerCSV.pdf"
+          className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:scale-125"
+          alt="alt text"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="flex items-center">
             <div className="fill-blue mr-2">
@@ -46,7 +49,7 @@ export default function Footer() {
             </div>
             Resume
           </div>
-        </Link>
+        </a>
       </div>
     </footer>
   );
