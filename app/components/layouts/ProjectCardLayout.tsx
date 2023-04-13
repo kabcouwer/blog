@@ -25,7 +25,7 @@ export default function ProjectCardLayout(props: ProjectCardProps) {
   const { title, subtitle, dates, demo, source, skills, description, id } =
     props.details;
 
-  const isHidden = id === "project_portfolio";
+  const isHidden = id === "project_portfolio" || "market_money";
 
   return (
     <div id={id} className="md:pl-12 cursor-auto">
