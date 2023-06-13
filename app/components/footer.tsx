@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
         </Link>
         <a
-          href="/files/KimAbcouwerCSV.pdf"
+          href="/files/KimAbcouwer_CV.pdf"
           className="text-sm font-semibold md:mr-8 mr-4 uppercase text-black dark:text-white hover:scale-125"
           target="_blank"
           rel="noopener noreferrer"
